@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  tg-bot:
+    build: .
+    container_name: tg-prompt-enhancer
+    restart: unless-stopped
+    env_file:
+      - .env
+    volumes:
+      - ./data:/app/data
+    environment:
+      - PYTHONUNBUFFERED=1
+    networks:
+      - bot-network
+
+networks:
+  bot-network:
+    driver: bridge 
